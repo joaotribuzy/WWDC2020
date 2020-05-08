@@ -21,8 +21,11 @@ extension RhythmGameScene{
     
     private func setupButtonsStyle(){
         firstButton.fillColor = .yellow
+        firstButton.lineWidth = 0
         secondButton.fillColor = .green
+        secondButton.lineWidth = 0
         thirdButton.fillColor = .blue
+        thirdButton.lineWidth = 0
     }
     
     private func setupButtonsPosition(){
@@ -45,6 +48,7 @@ extension RhythmGameScene{
     
     private func setupClockStyle(){
         clock.fillColor = .red
+        clock.lineWidth = 0
     }
     
     private func setupClockPosition(){
