@@ -1,5 +1,6 @@
 import SpriteKit
 import UIKit
+import AVFoundation
 
 enum SoundElement{
     case kick
@@ -25,7 +26,20 @@ extension RhythmGameScene{
         let touchedNodes = nodes(at: location)
         let frontTouchedNode = atPoint(location).name
         
-        // TODO: play audio
+        // TODO: play audi
+        playAudio()
+    }
+    
+    func playAudio(){
+        var soundElement: AVAudioPlayer?
+        let url = #fileLiteral(resourceName: "kick.mp3")
         
+        do {
+            soundElement = try AVAudioPlayer(contentsOf: url)
+            soundElement?.prepareToPlay()
+            soundElement?.play()
+        } catch {
+            print("deu ruim")
+        }
     }
 }

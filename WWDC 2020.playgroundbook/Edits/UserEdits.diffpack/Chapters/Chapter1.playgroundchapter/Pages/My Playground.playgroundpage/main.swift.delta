@@ -7,24 +7,15 @@
 		<dict>
 			<key>ModifiedContent</key>
 			<string>import PlaygroundSupport
+
+PlaygroundPage.current.setLiveView(RhythmGameViewController())
 </string>
 			<key>ModifiedRange</key>
-			<string>{0, 25}</string>
+			<string>{0, 89}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>
 			<string>{0, 0}</string>
-		</dict>
-		<dict>
-			<key>ModifiedContent</key>
-			<string>PlaygroundPage.current.setLiveView(RhythmGameViewController())
-</string>
-			<key>ModifiedRange</key>
-			<string>{26, 63}</string>
-			<key>OriginalContent</key>
-			<string></string>
-			<key>OriginalRange</key>
-			<string>{1, 0}</string>
 		</dict>
 	</array>
 	<key>File</key>
