@@ -1,22 +1,16 @@
 import SpriteKit
 
-public class RhythmGameScene: SKScene{
-    internal let firstButton = SKShapeNode(circleOfRadius: 60)
-    internal let secondButton = SKShapeNode(circleOfRadius: 60)
-    internal let thirdButton = SKShapeNode(circleOfRadius: 60)
-    
-    internal let clock = SKShapeNode(circleOfRadius: 300)
-    
-    override public func didMove(to view: SKView) {
-        backgroundColor = .purple
-        setupButton()
-        setupClock()
-    }
-}
 extension RhythmGameScene{
-    private func setupButton(){
+    public func setupButton(){
         setupButtonsStyle()
         setupButtonsPosition()
+        setupButtonsName()
+    }
+    
+    private func setupButtonsName(){
+        firstButton.name = SoundElement.kick.description
+        secondButton.name = SoundElement.snare.description
+        thirdButton.name = SoundElement.hihat.description
     }
     
     private func setupButtonsStyle(){
@@ -41,7 +35,7 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
-    private func setupClock(){
+    public func setupClock(){
         setupClockStyle()
         setupClockPosition()
     }
@@ -56,3 +50,5 @@ extension RhythmGameScene{
         addChild(clock)
     }
 }
+
+

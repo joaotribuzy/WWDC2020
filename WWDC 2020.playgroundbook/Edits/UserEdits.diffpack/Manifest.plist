@@ -34,15 +34,11 @@
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/BeatButton.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
 				<string>UserModules/SharedResources.playgroundmodule/Sources/RhythmGameSceneStyle.swift</string>
 			</dict>
 			<dict>
 				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/Vai.swift</string>
+				<string>UserModules/SharedResources.playgroundmodule/Sources/Extension+SKShapeNode.swift</string>
 			</dict>
 		</array>
 		<key>Modified</key>
