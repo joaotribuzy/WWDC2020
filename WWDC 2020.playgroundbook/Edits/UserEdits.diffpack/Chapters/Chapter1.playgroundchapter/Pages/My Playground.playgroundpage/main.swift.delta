@@ -7,11 +7,15 @@
 		<dict>
 			<key>ModifiedContent</key>
 			<string>import PlaygroundSupport
+import AVFoundation
+import UIKit
+
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 PlaygroundPage.current.setLiveView(RhythmGameViewController())
 </string>
 			<key>ModifiedRange</key>
-			<string>{0, 89}</string>
+			<string>{0, 178}</string>
 			<key>OriginalContent</key>
 			<string></string>
 			<key>OriginalRange</key>

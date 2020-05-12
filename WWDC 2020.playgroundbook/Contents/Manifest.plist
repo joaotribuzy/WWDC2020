@@ -19,7 +19,9 @@
 	<key>Version</key>
 	<string>7.0</string>
 	<key>UserAutoImportedAuxiliaryModules</key>
-	<array/>
+	<array>
+		<string>Book</string>
+	</array>
 	<key>UserModuleMode</key>
 	<string>Full</string>
 </dict>
