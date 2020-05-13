@@ -50,6 +50,22 @@ public class BeatPlayer {
         try! engine.start()
     }
     
+    public func playSequence(compassTempo: Double, numberOfPositionNodes: Int, sequence: [SoundElement]){
+        for element in sequence{
+            switch element{
+            case SoundElement.kick:
+                playBeat(withIndex: 0)
+            case SoundElement.snare:
+                playBeat(withIndex: 1)
+            case SoundElement.hihat:
+                playBeat(withIndex: 2)
+            default:
+                break
+            }
+            sleep(compassTempo / numberOfPositionNodes)
+        }
+    }
+    
     public func playBeat(withIndex: Int){
         DispatchQueue.global().async{ [unowned self] in
             let node = self.audioAudioNodes[withIndex]
