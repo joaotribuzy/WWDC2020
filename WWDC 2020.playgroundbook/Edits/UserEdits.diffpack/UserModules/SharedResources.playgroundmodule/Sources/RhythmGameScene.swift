@@ -1,13 +1,13 @@
 import SpriteKit
 
 public class RhythmGameScene: SKScene{
-    public let firstButton = SKShapeNode(circleOfRadius: 60)
-    public let secondButton = SKShapeNode(circleOfRadius: 60)
-    public let thirdButton = SKShapeNode(circleOfRadius: 60)
+    public let firstButton = SKShapeNode(circleOfRadius: 30)
+    public let secondButton = SKShapeNode(circleOfRadius: 30)
+    public let thirdButton = SKShapeNode(circleOfRadius: 30)
     
     public let clock = SKShapeNode(circleOfRadius: 300)
     
-    public var positionNodes: [SKShapeNode] = []
+    public var positionNodes: [PositionNode] = []
     
     let audioPlayer = BeatPlayer(urls: [.kick, .hihat, .snare])
     

@@ -64,12 +64,16 @@ extension RhythmGameScene{
         for posNode in positionNodes{
             print(posNode)
             print(frontTouchedNode)
-            if frontTouchedNode.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)){
+            if frontTouchedNode.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)) && posNode.isOcupped == false{
                 frontTouchedNode.position.x = posNode.position.x
                 frontTouchedNode.position.y = posNode.position.y - 100
-                print("vai")
                 isInPosition += 1
+                posNode.isOcupped = true
+                posNode.occupedWith = SoundElement.kick
             } 
+            else{
+                posNode.isOcupped = false
+            }
         }
         if isInPosition == 0{
             setupButtonsPosition()
@@ -96,7 +100,7 @@ extension RhythmGameScene{
         let radius: CGFloat = 250
         let numberOfCircle = quantity
         for i in 0...numberOfCircle {
-            let circle = SKShapeNode(circleOfRadius: 10)
+            let circle = PositionNode(circleOfRadius: 10)
             circle.strokeColor = .clear
             circle.fillColor = .cyan
             circle.name = String(format:"circle%d",i)
