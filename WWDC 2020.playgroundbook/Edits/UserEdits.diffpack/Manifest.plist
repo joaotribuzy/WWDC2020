@@ -40,10 +40,6 @@
 				<key>File</key>
 				<string>UserModules/SharedResources.playgroundmodule/Sources/Extension+SKShapeNode.swift</string>
 			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/BeatPlayer.swift</string>
-			</dict>
 		</array>
 		<key>Modified</key>
 		<array>

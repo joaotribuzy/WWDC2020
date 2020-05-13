@@ -30,7 +30,6 @@ extension RhythmGameScene{
         
         playSoundElement(frontTouchedNode)
         
-        scaleDown(frontTouchedNode)
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,7 +43,6 @@ extension RhythmGameScene{
         
         let frontTouchedNode = atPoint(location)
         
-        scaleUp(frontTouchedNode)
     }
     
     public func playSoundElement(_ node: SKNode){
@@ -59,14 +57,24 @@ extension RhythmGameScene{
             break 
         }
     }
-    
-    func scaleDown(_ node: SKNode) {
-        let scaleDownAction = SKAction.scale(to: 0.7, duration: 0.3)
-        node.run(scaleDownAction)
-    }
-    func scaleUp(_ node: SKNode){
-        let scaleDownAction = SKAction.scale(to: 1, duration: 0.3)
-        node.run(scaleDownAction)
-    }
 }
 
+extension RhythmGameScene{
+    public func setupPositionNodes(_ quantity: Int = 8){
+        let radius: CGFloat = 250
+        let numberOfCircle = quantity
+        for i in 0...numberOfCircle {
+            let circle = SKShapeNode(circleOfRadius: 10)
+            circle.strokeColor = .clear
+            circle.fillColor = .cyan
+            circle.name = String(format:"circle%d",i)
+            let angle = 2 * Double.pi / Double(numberOfCircle) * Double(i)
+            
+            let circleX = radius * cos(CGFloat(angle))
+            let circleY = radius * sin(CGFloat(angle))
+            
+            circle.position = CGPoint(x:circleX + frame.midX, y:circleY + frame.midY)
+            clock.addChild(circle)
+        }
+    }
+}

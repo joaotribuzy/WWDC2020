@@ -53,9 +53,12 @@ public class BeatPlayer {
     public func playBeat(withIndex: Int){
         DispatchQueue.global().async{ [unowned self] in
             let node = self.audioAudioNodes[withIndex]
+            node.stop()
             node.scheduleFile(self.audioFiles[withIndex], at: nil, completionHandler: nil)
             node.play()
         }
     }
+    
+    
 }
 
