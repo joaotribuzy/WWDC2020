@@ -7,15 +7,15 @@ public class RhythmGameScene: SKScene{
     
     public let clock = SKShapeNode(circleOfRadius: 300)
     
-    public var positionNodes: [SKNode] = []
+    public var positionNodes: [SKShapeNode] = []
     
     let audioPlayer = BeatPlayer(urls: [.kick, .hihat, .snare])
     
     override public func didMove(to view: SKView) {
         backgroundColor = .purple
         setupClock()
-        setupPositionNodes()
         setupButton()
+        setupPositionNodes()
         
         audioPlayer.start()
     }

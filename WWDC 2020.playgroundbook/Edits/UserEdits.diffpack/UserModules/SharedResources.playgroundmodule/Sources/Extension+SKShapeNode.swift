@@ -18,9 +18,7 @@ public enum SoundElement{
 
 extension RhythmGameScene{
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
+        guard let touch = touches.first else { return }
         
         let location = touch.location(in: self)
         
@@ -29,6 +27,21 @@ extension RhythmGameScene{
         let frontTouchedNode = atPoint(location)
         
         playSoundElement(frontTouchedNode)
+        
+    }
+    
+    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else{ return }
+        let location = touch.location(in: self)
+        let touchedNodes = nodes(at: location)
+        let frontTouchedNode = atPoint(location)
+        
+        guard frontTouchedNode == firstButton else {return}
+        
+        if frontTouchedNode.frame.contains(touch.previousLocation(in: self)){
+            frontTouchedNode.position = touch.location(in: self)
+        }
+        
         
     }
     
@@ -42,6 +55,25 @@ extension RhythmGameScene{
         let touchedNodes = nodes(at: location)
         
         let frontTouchedNode = atPoint(location)
+        
+        guard frontTouchedNode == firstButton else {return}
+        
+        print(frontTouchedNode.frame)
+        
+        var isInPosition = 0
+        for posNode in positionNodes{
+            print(posNode)
+            print(frontTouchedNode)
+            if frontTouchedNode.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)){
+                frontTouchedNode.position.x = posNode.position.x
+                frontTouchedNode.position.y = posNode.position.y - 100
+                print("vai")
+                isInPosition += 1
+            } 
+        }
+        if isInPosition == 0{
+            setupButtonsPosition()
+        }
         
     }
     
@@ -60,7 +92,7 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
-    public func setupPositionNodes(_ quantity: Int = 8){
+    public func setupPositionNodes(_ quantity: Int = 4){
         let radius: CGFloat = 250
         let numberOfCircle = quantity
         for i in 0...numberOfCircle {
@@ -74,7 +106,10 @@ extension RhythmGameScene{
             let circleY = radius * sin(CGFloat(angle))
             
             circle.position = CGPoint(x:circleX + frame.midX, y:circleY + frame.midY)
+            
+            positionNodes.append(circle)
             clock.addChild(circle)
+            positionNodes.first!.fillColor = .systemPink
         }
     }
 }

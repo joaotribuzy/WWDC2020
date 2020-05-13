@@ -2,6 +2,9 @@ import SpriteKit
 
 extension RhythmGameScene{
     public func setupButton(){
+        addChild(firstButton)
+        addChild(secondButton)
+        addChild(thirdButton)
         setupButtonsStyle()
         setupButtonsPosition()
         setupButtonsName()
@@ -22,15 +25,10 @@ extension RhythmGameScene{
         thirdButton.lineWidth = 0
     }
     
-    private func setupButtonsPosition(){
+    public func setupButtonsPosition(){
         firstButton.position = CGPoint(x: 0 - 200, y: 480 - 80)
-        addChild(firstButton)
-        
         secondButton.position = CGPoint(x: 0, y: 480 - 80)
-        addChild(secondButton)
-        
         thirdButton.position = CGPoint(x: 0 + 200, y: 480 - 80)
-        addChild(thirdButton)
     }
 }
 
