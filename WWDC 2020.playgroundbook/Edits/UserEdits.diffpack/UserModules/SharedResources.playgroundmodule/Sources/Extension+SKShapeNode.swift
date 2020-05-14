@@ -91,7 +91,12 @@ extension RhythmGameScene{
     public func moveNode(_ node: BeatButtonNode, touch: UITouch){
         guard buttonsList.contains(node) else {return}
         
+        for btn in buttonsList{
+            btn.zPosition = 3
+        }
+        
         if node.frame.contains(touch.previousLocation(in: self)){
+            node.zPosition = 4
             node.position = touch.location(in: self)
         }
     }
@@ -108,9 +113,10 @@ extension RhythmGameScene{
         
         var isInPosition = 0
         for posNode in positionNodes{
-            if node.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)) && posNode.isOcupped == false{
+            if node.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)) && posNode.isOcupped != true{
                 node.position.x = posNode.position.x
                 node.position.y = posNode.position.y - 100
+                print(posNode.isOcupped)
                 if node.previousNodePosition != nil{
                     node.previousNodePosition?.isOcupped = false
                     node.previousNodePosition?.occupedWith = nil
@@ -120,31 +126,10 @@ extension RhythmGameScene{
                 posNode.isOcupped = true
                 posNode.occupedWith = node.soundElement
                 isInPosition += 1
-            } else if posNode.isOcupped == true{
-//                  node.position = node.previousPosition
-//                  refreshOccuped()
-            }
+            } 
         }
         if isInPosition == 0{
             node.position = node.previousPosition
-        }
-    }
-    
-    func refreshOccuped(){
-        for pos in positionNodes{
-            pos.isOcupped = false
-            pos.occupedWith = nil
-        }
-        for button in buttonsList{
-            for (index, pos) in positionNodes.enumerated(){
-                if button.frame.contains(CGPoint(x: pos.position.x, y: pos.position.y - 100)){
-                    positionNodes[index].isOcupped = true
-                    positionNodes[index].occupedWith = button.soundElement
-                } else{
-//                      positionNodes[index].isOcupped = false
-//                      positionNodes[index].occupedWith = nil
-                }
-            }
         }
     }
 }
