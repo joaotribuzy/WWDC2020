@@ -27,8 +27,14 @@ extension RhythmGameScene{
     
     public func setupButtonsPosition(){
         firstButton.position = CGPoint(x: 0 - 200, y: 480 - 80)
+        firstButton.previousPosition = firstButton.position
+        firstButton.initialPosition = firstButton.position
         secondButton.position = CGPoint(x: 0, y: 480 - 80)
+        secondButton.previousPosition = secondButton.position
+        secondButton.initialPosition = secondButton.position
         thirdButton.position = CGPoint(x: 0 + 200, y: 480 - 80)
+        thirdButton.previousPosition = thirdButton.position
+        thirdButton.initialPosition = thirdButton.position
     }
 }
 
