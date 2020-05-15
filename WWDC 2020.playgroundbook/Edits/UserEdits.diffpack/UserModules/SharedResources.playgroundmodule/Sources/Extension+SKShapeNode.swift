@@ -54,9 +54,6 @@ extension RhythmGameScene{
             
             plugInPosition(location)
         }
-//          print(firstButton.isUserInteractionEnabled)
-//          print(secondButton.isUserInteractionEnabled)
-//          print(thirdButton.isUserInteractionEnabled)
     }
     
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
