@@ -80,8 +80,6 @@ extension RhythmGameScene{
             }else{
                 firstButton.position = location
             }
-//              secondButton.isUserInteractionEnabled = false
-//              thirdButton.isUserInteractionEnabled = false
             
         } else if secondButton.contains(location){
             secondButton.zPosition = 4
@@ -92,8 +90,7 @@ extension RhythmGameScene{
             }else{
                 secondButton.position = location
             }
-//              firstButton.isUserInteractionEnabled = false
-//              thirdButton.isUserInteractionEnabled = false
+
         } else if thirdButton.contains(location){
             thirdButton.zPosition = 4
             if thirdButton.intersects(firstButton) || thirdButton.intersects(secondButton){
@@ -103,11 +100,7 @@ extension RhythmGameScene{
             }else{
                 thirdButton.position = location
             }
-//              secondButton.isUserInteractionEnabled = false
-//              firstButton.isUserInteractionEnabled = false
         }
-        
-        
     }
     
     public func plugInPosition(_ location: CGPoint){
@@ -115,16 +108,10 @@ extension RhythmGameScene{
         
         if firstButton.contains(location){
             node = firstButton
-//              secondButton.isUserInteractionEnabled = true
-//              thirdButton.isUserInteractionEnabled = true
         } else if secondButton.contains(location){
             node = secondButton
-//              firstButton.isUserInteractionEnabled = true
-//              thirdButton.isUserInteractionEnabled = true
         } else if thirdButton.contains(location){
             node = thirdButton
-//              secondButton.isUserInteractionEnabled = true
-//              firstButton.isUserInteractionEnabled = true
         }
         
         guard node != nil else {return}
@@ -141,25 +128,38 @@ extension RhythmGameScene{
             if (node?.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)))! && posNode.isOcupped != true{
                 node?.position.x = posNode.position.x
                 node?.position.y = posNode.position.y - 100
-                if node?.previousNodePosition != nil{
-                    node?.previousNodePosition?.isOcupped = false
-                    node?.previousNodePosition?.occupedWith = nil
-                }
+//                  if node?.previousNodePosition != nil{
+//                      node?.previousNodePosition?.isOcupped = false
+//                      node?.previousNodePosition?.occupedWith = nil
+//                  }
+                refreshOccupedPositions()
                 node?.previousNodePosition = posNode
                 node?.previousPosition = node!.position
                 posNode.isOcupped = true
                 posNode.occupedWith = node!.soundElement
                 isInPosition += 1
-//                  for button in buttonsList{
-//                      button.isUserInteractionEnabled = true
-//                  }
-                print(firstButton.isUserInteractionEnabled)
-                print(secondButton.isUserInteractionEnabled)
-                print(thirdButton.isUserInteractionEnabled)
             } 
         }
         if isInPosition == 0{
             node?.position = node!.previousPosition
+        }
+    }
+}
+
+extension RhythmGameScene{
+    private func refreshOccupedPositions(){
+        for pos in positionNodes{
+            if pos.intersects(firstButton) {
+                pos.isOcupped = true
+                pos.occupedWith = firstButton.soundElement
+            } else if pos.intersects(secondButton){
+                pos.isOcupped = true
+                pos.occupedWith = secondButton.soundElement
+            }else if pos.intersects(thirdButton){
+                pos.isOcupped = true
+                pos.occupedWith = secondButton.soundElement
+            }
+            
         }
     }
 }
