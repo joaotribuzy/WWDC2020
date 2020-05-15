@@ -35,6 +35,10 @@ extension RhythmGameScene{
         thirdButton.position = CGPoint(x: 0 + 200, y: 480 - 80)
         thirdButton.previousPosition = thirdButton.position
         thirdButton.initialPosition = thirdButton.position
+        
+        for btn in buttonsList{
+            btn.zPosition = 3
+        }
     }
 }
 
@@ -52,6 +56,29 @@ extension RhythmGameScene{
     private func setupClockPosition(){
         clock.position = CGPoint(x: 0, y: 0 - 100)
         addChild(clock)
+    }
+}
+
+extension RhythmGameScene{
+    public func setupPositionNodes(_ quantity: Int = 4){
+        let radius: CGFloat = 250
+        let numberOfCircle = quantity
+        for i in 0...numberOfCircle {
+            let circle = PositionNode(circleOfRadius: 10)
+            circle.strokeColor = .clear
+            circle.fillColor = .cyan
+            circle.name = String(format:"circle%d",i)
+            let angle = 2 * Double.pi / Double(numberOfCircle) * Double(i)
+            
+            let circleX = radius * cos(CGFloat(angle))
+            let circleY = radius * sin(CGFloat(angle))
+            
+            circle.position = CGPoint(x:circleX + frame.midX, y:circleY + frame.midY)
+            
+            positionNodes.append(circle)
+            clock.addChild(circle)
+            positionNodes.first!.fillColor = .systemPink
+        }
     }
 }
 
