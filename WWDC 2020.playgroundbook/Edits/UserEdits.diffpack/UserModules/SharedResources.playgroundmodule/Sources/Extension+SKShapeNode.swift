@@ -54,6 +54,9 @@ extension RhythmGameScene{
             
             plugInPosition(location)
         }
+//          print(firstButton.isUserInteractionEnabled)
+//          print(secondButton.isUserInteractionEnabled)
+//          print(thirdButton.isUserInteractionEnabled)
     }
     
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -62,6 +65,9 @@ extension RhythmGameScene{
             
             plugInPosition(location)
         }
+        print(firstButton.isUserInteractionEnabled)
+        print(secondButton.isUserInteractionEnabled)
+        print(thirdButton.isUserInteractionEnabled)
     }
 }
 
@@ -70,20 +76,40 @@ extension RhythmGameScene{
         
         if firstButton.contains(location){
             firstButton.zPosition = 4
-            firstButton.position = location
-            secondButton.isUserInteractionEnabled = false
-            thirdButton.isUserInteractionEnabled = false
+            if firstButton.intersects(secondButton) || firstButton.intersects(thirdButton){
+                firstButton.position = firstButton.initialPosition
+                firstButton.previousPosition = firstButton.initialPosition
+                firstButton.previousNodePosition = nil
+            }else{
+                firstButton.position = location
+            }
+//              secondButton.isUserInteractionEnabled = false
+//              thirdButton.isUserInteractionEnabled = false
+            
         } else if secondButton.contains(location){
             secondButton.zPosition = 4
-            secondButton.position = location
-            firstButton.isUserInteractionEnabled = false
-            thirdButton.isUserInteractionEnabled = false
+            if secondButton.intersects(firstButton) || secondButton.intersects(thirdButton){
+                secondButton.position = secondButton.initialPosition
+                secondButton.previousPosition = secondButton.initialPosition
+                secondButton.previousNodePosition = nil
+            }else{
+                secondButton.position = location
+            }
+//              firstButton.isUserInteractionEnabled = false
+//              thirdButton.isUserInteractionEnabled = false
         } else if thirdButton.contains(location){
             thirdButton.zPosition = 4
-            thirdButton.position = location
-            secondButton.isUserInteractionEnabled = false
-            firstButton.isUserInteractionEnabled = false
+            if thirdButton.intersects(firstButton) || thirdButton.intersects(secondButton){
+                thirdButton.position = thirdButton.initialPosition
+                thirdButton.previousPosition = thirdButton.initialPosition
+                thirdButton.previousNodePosition = nil
+            }else{
+                thirdButton.position = location
+            }
+//              secondButton.isUserInteractionEnabled = false
+//              firstButton.isUserInteractionEnabled = false
         }
+        
         
     }
     
@@ -92,16 +118,16 @@ extension RhythmGameScene{
         
         if firstButton.contains(location){
             node = firstButton
-            secondButton.isUserInteractionEnabled = true
-            thirdButton.isUserInteractionEnabled = true
+//              secondButton.isUserInteractionEnabled = true
+//              thirdButton.isUserInteractionEnabled = true
         } else if secondButton.contains(location){
             node = secondButton
-            firstButton.isUserInteractionEnabled = true
-            thirdButton.isUserInteractionEnabled = true
+//              firstButton.isUserInteractionEnabled = true
+//              thirdButton.isUserInteractionEnabled = true
         } else if thirdButton.contains(location){
             node = thirdButton
-            secondButton.isUserInteractionEnabled = true
-            firstButton.isUserInteractionEnabled = true
+//              secondButton.isUserInteractionEnabled = true
+//              firstButton.isUserInteractionEnabled = true
         }
         
         guard node != nil else {return}
@@ -127,9 +153,9 @@ extension RhythmGameScene{
                 posNode.isOcupped = true
                 posNode.occupedWith = node!.soundElement
                 isInPosition += 1
-                for button in buttonsList{
-                    button.isUserInteractionEnabled = true
-                }
+//                  for button in buttonsList{
+//                      button.isUserInteractionEnabled = true
+//                  }
                 print(firstButton.isUserInteractionEnabled)
                 print(secondButton.isUserInteractionEnabled)
                 print(thirdButton.isUserInteractionEnabled)
