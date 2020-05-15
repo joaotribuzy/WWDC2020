@@ -35,6 +35,9 @@ extension RhythmGameScene{
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
+            if playButton.contains(location){
+                playSequence(positionNodes, totalTime: 5, division: 4)
+            }
         }
     }
     
@@ -128,10 +131,6 @@ extension RhythmGameScene{
             if (node?.frame.contains(CGPoint(x: posNode.position.x, y: posNode.position.y - 100)))! && posNode.isOcupped != true{
                 node?.position.x = posNode.position.x
                 node?.position.y = posNode.position.y - 100
-//                  if node?.previousNodePosition != nil{
-//                      node?.previousNodePosition?.isOcupped = false
-//                      node?.previousNodePosition?.occupedWith = nil
-//                  }
                 refreshOccupedPositions()
                 node?.previousNodePosition = posNode
                 node?.previousPosition = node!.position
@@ -165,16 +164,27 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
-    public func playSoundElement(_ node: SKShapeNode){
-        switch node.name {
-        case SoundElement.kick.description:
+    public func playSoundElement(_ element: SoundElement){
+        switch element {
+        case SoundElement.kick:
             audioPlayer.playBeat(withIndex: 0)
-        case SoundElement.hihat.description:
+        case SoundElement.hihat:
             audioPlayer.playBeat(withIndex: 1)
-        case SoundElement.snare.description:
+        case SoundElement.snare:
             audioPlayer.playBeat(withIndex: 2)
         default:
             break 
+        }
+    }
+    
+    private func playSequence(_ positions: [PositionNode], totalTime: Double, division: Int){
+        let interval: Double = totalTime / Double(division)
+        
+        for pos in positions{
+            if pos.isOcupped == true{
+                playSoundElement(pos.occupedWith!)
+            }
+            sleep(UInt32(interval))
         }
     }
 }

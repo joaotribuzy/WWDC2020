@@ -10,6 +10,8 @@ public class RhythmGameScene: SKScene{
     
     public var positionNodes: [PositionNode] = []
     
+    public var playButton: SKShapeNode = SKShapeNode(circleOfRadius: 50)
+    
     let audioPlayer = BeatPlayer(urls: [.kick, .hihat, .snare])
     
     override public func didMove(to view: SKView) {
@@ -19,6 +21,7 @@ public class RhythmGameScene: SKScene{
         setupButton()
         setupPositionNodes()
         audioPlayer.start()
+        setupPlayButton()
     }
 }
 

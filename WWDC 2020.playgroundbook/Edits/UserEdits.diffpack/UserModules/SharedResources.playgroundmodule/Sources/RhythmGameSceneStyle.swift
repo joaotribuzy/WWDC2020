@@ -60,6 +60,23 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
+    public func setupPlayButton(){
+        setupButtonPlayPosition()
+        setupButtonPlayStyle()
+    }
+    
+    private func setupButtonPlayPosition(){
+        playButton.position = CGPoint(x: 0 + 200, y: 480 - 200)
+        addChild(playButton)
+    }
+    
+    private func setupButtonPlayStyle(){
+        playButton.fillColor = .link
+        playButton.lineWidth = 0
+    }
+}
+
+extension RhythmGameScene{
     public func setupPositionNodes(_ quantity: Int = 4){
         let radius: CGFloat = 250
         let numberOfCircle = quantity
