@@ -10,6 +10,7 @@ public class RhythmGameScene: SKScene{
     public let clock = SKShapeNode(circleOfRadius: 300)
     
     var timeOfSequence: TimeInterval = 1
+    var numberOfSpaces: Int = 8
     
     public var pointer = SKSpriteNode(color: .black, size: CGSize(width: 10, height: 280))
     
@@ -25,7 +26,7 @@ public class RhythmGameScene: SKScene{
         audioPlayer.start()
         setupClock()
         setupButton()
-        setupPositionNodes()
+        setupPositionNodes(numberOfSpaces)
         setupPlayButton()
         setupPointer()
         

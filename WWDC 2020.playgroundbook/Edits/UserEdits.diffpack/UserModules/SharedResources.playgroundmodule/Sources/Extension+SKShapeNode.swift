@@ -81,7 +81,7 @@ extension RhythmGameScene{
     public func moveNode(_ location: CGPoint){
         if firstButton.contains(location){
             firstButton.zPosition = 4
-            if firstButton.intersects(secondButton) || firstButton.intersects(thirdButton){
+            if firstButton.intersects(secondButton) || firstButton.intersects(thirdButton) || firstButton.intersects(fourthButton){
                 firstButton.position = firstButton.initialPosition
                 firstButton.previousPosition = firstButton.initialPosition
                 firstButton.previousNodePosition = nil
@@ -91,7 +91,7 @@ extension RhythmGameScene{
             
         } else if secondButton.contains(location){
             secondButton.zPosition = 4
-            if secondButton.intersects(firstButton) || secondButton.intersects(thirdButton){
+            if secondButton.intersects(firstButton) || secondButton.intersects(thirdButton) || secondButton.intersects(fourthButton){
                 secondButton.position = secondButton.initialPosition
                 secondButton.previousPosition = secondButton.initialPosition
                 secondButton.previousNodePosition = nil
@@ -101,12 +101,21 @@ extension RhythmGameScene{
 
         } else if thirdButton.contains(location){
             thirdButton.zPosition = 4
-            if thirdButton.intersects(firstButton) || thirdButton.intersects(secondButton){
+            if thirdButton.intersects(firstButton) || thirdButton.intersects(secondButton) || thirdButton.intersects(fourthButton){
                 thirdButton.position = thirdButton.initialPosition
                 thirdButton.previousPosition = thirdButton.initialPosition
                 thirdButton.previousNodePosition = nil
-            }else{
+            } else {
                 thirdButton.position = location
+            }
+        } else if fourthButton.contains(location){
+            fourthButton.zPosition = 4
+            if fourthButton.intersects(firstButton) || fourthButton.intersects(secondButton) || fourthButton.intersects(thirdButton){
+                fourthButton.position = fourthButton.initialPosition
+                fourthButton.previousPosition = fourthButton.initialPosition
+                fourthButton.previousNodePosition = nil
+            }else{
+                fourthButton.position = location
             }
         }
     }
@@ -120,6 +129,8 @@ extension RhythmGameScene{
             node = secondButton
         } else if thirdButton.contains(location){
             node = thirdButton
+        } else if fourthButton.contains(location){
+            node = fourthButton
         }
         
         guard node != nil else {return}
@@ -177,6 +188,8 @@ extension RhythmGameScene{
             playSoundElement(SoundElement.hihat)
         } else if thirdButton.contains(location){
             playSoundElement(SoundElement.snare)
+        } else if fourthButton.contains(location){
+            playSoundElement(SoundElement.hihat)
         }
     }
     public func playSoundElement(_ element: SoundElement){
@@ -194,7 +207,7 @@ extension RhythmGameScene{
     
     private func rotatePointer(){
         let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: timeOfSequence)
-        let repeatForever = SKAction.repeatForever(rotate)
+        let repeatForever = SKAction.repeatForever(SKAction.sequence([rotate]))
         pointer.run(repeatForever)
     }
     
