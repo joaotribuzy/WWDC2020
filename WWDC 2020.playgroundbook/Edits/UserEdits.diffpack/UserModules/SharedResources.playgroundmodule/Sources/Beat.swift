@@ -7,6 +7,7 @@ public class BeatPlayer {
     var audioAudioNodes = [AVAudioPlayerNode]()
     var mixer: AVAudioMixerNode
     var urls: [SoundElement] = []
+    var isPlaying: Bool = true
     
     public init (urls: [SoundElement] = []) {
         audioFiles = urls.map { try! AVAudioFile(forReading: $0.file) }
@@ -35,26 +36,28 @@ public class BeatPlayer {
     public func playSequence(sequence: [PositionNode], totalTime: Double, quantity: Double){
         var interval = totalTime / quantity
         DispatchQueue.global().async { [unowned self] in
-            for element in sequence {
-                Thread.sleep(forTimeInterval: interval)
-                var index: Int {
-                var value = -1
-                switch element.occupedWith {
-                case .kick:
-                    value = 0
-                case .hihat:
-                    value = 1
-                case .snare:
-                    value = 2
-                default:
-                    value = -1 
-                }
-                    return value
-                }
-                if index != -1{
-                    let node = self.audioAudioNodes[index]
-                    node.scheduleFile(self.audioFiles[index], at: nil, completionHandler: nil)
-                    node.play()
+            while(self.isPlaying == true){
+                for element in sequence {
+                    Thread.sleep(forTimeInterval: interval)
+                    var index: Int {
+                        var value = -1
+                        switch element.occupedWith {
+                        case .kick:
+                            value = 0
+                        case .hihat:
+                            value = 1
+                        case .snare:
+                            value = 2
+                        default:
+                            value = -1 
+                        }
+                        return value
+                    }
+                    if index != -1{
+                        let node = self.audioAudioNodes[index]
+                        node.scheduleFile(self.audioFiles[index], at: nil, completionHandler: nil)
+                        node.play()
+                    }
                 }
             }
         }

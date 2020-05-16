@@ -60,6 +60,24 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
+    public func setupPointer(){
+        addChild(pointer)
+        setupPointerPosition()
+        setupPointerStyle()
+    }
+    
+    private func setupPointerPosition(){
+        pointer.position = CGPoint(x: 0, y: -100)
+        pointer.anchorPoint = CGPoint(x: 0.5, y: 0)
+        pointer.zPosition = 5
+    }
+    
+    private func setupPointerStyle(){
+        
+    }
+}
+
+extension RhythmGameScene{
     public func setupPlayButton(){
         setupButtonPlayPosition()
         setupButtonPlayStyle()

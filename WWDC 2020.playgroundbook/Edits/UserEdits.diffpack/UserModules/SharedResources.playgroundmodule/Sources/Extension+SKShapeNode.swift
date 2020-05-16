@@ -37,6 +37,7 @@ extension RhythmGameScene{
             let location = touch.location(in: self)
             if playButton.contains(location){
                 audioPlayer.playSequence(sequence: positionNodes, totalTime: 1, quantity: 8)
+                rotatePointer()
             }
             print(firstButton.isUserInteractionEnabled)
             print(secondButton.isUserInteractionEnabled)
@@ -135,15 +136,13 @@ extension RhythmGameScene{
                 node?.position.x = posNode.position.x
                 node?.position.y = posNode.position.y - 100
                 refreshOccupedPositions()
+                node?.previousNodePosition?.isOcupped = false
+                node?.previousNodePosition?.occupedWith = nil
                 node?.previousNodePosition = posNode
                 node?.previousPosition = node!.position
-//                  posNode.isOcupped = true
-//                  posNode.occupedWith = node!.soundElement
+                posNode.isOcupped = true
+                posNode.occupedWith = node!.soundElement
                 isInPosition += 1
-                print(positionNodes[0].occupedWith)
-                print(positionNodes[1].occupedWith)
-                print(positionNodes[2].occupedWith)
-                print(positionNodes[3].occupedWith)
             } 
         }
         if isInPosition == 0{
@@ -183,14 +182,9 @@ extension RhythmGameScene{
         }
     }
     
-//      private func playSequence(_ positions: [PositionNode], totalTime: Double, division: Int){
-//          let interval: Double = totalTime / Double(division)
-//          
-//          for pos in positions{
-//              if pos.isOcupped == true{
-//                  playSoundElement(pos.occupedWith!)
-//              }
-//              sleep(UInt32(interval))
-//          }
-//      }
+    private func rotatePointer(){
+        let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: 1)
+        let repeatRotation = SKAction.repeatForever(rotate)
+        pointer.run(repeatRotation)
+    }
 }
