@@ -4,6 +4,7 @@ public class RhythmGameScene: SKScene{
     public let firstButton = BeatButtonNode(circleOfRadius: 30)
     public let secondButton = BeatButtonNode(circleOfRadius: 30)
     public let thirdButton = BeatButtonNode(circleOfRadius: 30)
+    public let fourthButton = BeatButtonNode(circleOfRadius: 30)
     
     public var buttonsList: [BeatButtonNode] = [] 
     public let clock = SKShapeNode(circleOfRadius: 300)
