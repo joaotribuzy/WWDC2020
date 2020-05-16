@@ -11,9 +11,9 @@ extension RhythmGameScene{
     }
     
     private func setupButtonsName(){
-        firstButton.name = SoundElement.kick.description
-        secondButton.name = SoundElement.snare.description
-        thirdButton.name = SoundElement.hihat.description
+        firstButton.soundElement = SoundElement.kick
+        secondButton.soundElement = SoundElement.hihat
+        thirdButton.soundElement = SoundElement.snare
     }
     
     private func setupButtonsStyle(){
@@ -77,15 +77,16 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
-    public func setupPositionNodes(_ quantity: Int = 4){
+    public func setupPositionNodes(_ quantity: Int = 8){
         let radius: CGFloat = 250
         let numberOfCircle = quantity
-        for i in 0...numberOfCircle {
+        
+        for i in -2...numberOfCircle - 3 {
             let circle = PositionNode(circleOfRadius: 10)
             circle.strokeColor = .clear
             circle.fillColor = .cyan
             circle.name = String(format:"circle%d",i)
-            let angle = 2 * Double.pi / Double(numberOfCircle) * Double(i)
+            let angle = -2 * Double.pi / Double(numberOfCircle) * Double(i)
             
             let circleX = radius * cos(CGFloat(angle))
             let circleY = radius * sin(CGFloat(angle))
@@ -94,8 +95,9 @@ extension RhythmGameScene{
             
             positionNodes.append(circle)
             clock.addChild(circle)
-            positionNodes.first!.fillColor = .systemPink
         }
+//          positionNodes.first?.fillColor = .systemPink
+//          positionNodes[1].fillColor = .green
     }
 }
 

@@ -36,8 +36,11 @@ extension RhythmGameScene{
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
             if playButton.contains(location){
-                playSequence(positionNodes, totalTime: 5, division: 4)
+                audioPlayer.playSequence(sequence: positionNodes, totalTime: 1, quantity: 8)
             }
+            print(firstButton.isUserInteractionEnabled)
+            print(secondButton.isUserInteractionEnabled)
+            print(thirdButton.isUserInteractionEnabled)
         }
     }
     
@@ -48,6 +51,9 @@ extension RhythmGameScene{
             let location = touch.location(in: self)
             
             moveNode(location)
+            print(firstButton.isUserInteractionEnabled)
+            print(secondButton.isUserInteractionEnabled)
+            print(thirdButton.isUserInteractionEnabled)
         }
     }
     
@@ -65,15 +71,12 @@ extension RhythmGameScene{
             
             plugInPosition(location)
         }
-        print(firstButton.isUserInteractionEnabled)
-        print(secondButton.isUserInteractionEnabled)
-        print(thirdButton.isUserInteractionEnabled)
+        
     }
 }
 
 extension RhythmGameScene{
     public func moveNode(_ location: CGPoint){
-        
         if firstButton.contains(location){
             firstButton.zPosition = 4
             if firstButton.intersects(secondButton) || firstButton.intersects(thirdButton){
@@ -134,9 +137,13 @@ extension RhythmGameScene{
                 refreshOccupedPositions()
                 node?.previousNodePosition = posNode
                 node?.previousPosition = node!.position
-                posNode.isOcupped = true
-                posNode.occupedWith = node!.soundElement
+//                  posNode.isOcupped = true
+//                  posNode.occupedWith = node!.soundElement
                 isInPosition += 1
+                print(positionNodes[0].occupedWith)
+                print(positionNodes[1].occupedWith)
+                print(positionNodes[2].occupedWith)
+                print(positionNodes[3].occupedWith)
             } 
         }
         if isInPosition == 0{
@@ -156,9 +163,8 @@ extension RhythmGameScene{
                 pos.occupedWith = secondButton.soundElement
             }else if pos.intersects(thirdButton){
                 pos.isOcupped = true
-                pos.occupedWith = secondButton.soundElement
+                pos.occupedWith = thirdButton.soundElement
             }
-            
         }
     }
 }
@@ -177,14 +183,14 @@ extension RhythmGameScene{
         }
     }
     
-    private func playSequence(_ positions: [PositionNode], totalTime: Double, division: Int){
-        let interval: Double = totalTime / Double(division)
-        
-        for pos in positions{
-            if pos.isOcupped == true{
-                playSoundElement(pos.occupedWith!)
-            }
-            sleep(UInt32(interval))
-        }
-    }
+//      private func playSequence(_ positions: [PositionNode], totalTime: Double, division: Int){
+//          let interval: Double = totalTime / Double(division)
+//          
+//          for pos in positions{
+//              if pos.isOcupped == true{
+//                  playSoundElement(pos.occupedWith!)
+//              }
+//              sleep(UInt32(interval))
+//          }
+//      }
 }

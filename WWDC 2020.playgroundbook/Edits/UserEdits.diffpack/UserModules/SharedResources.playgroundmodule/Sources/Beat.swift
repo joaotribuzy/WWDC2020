@@ -1,4 +1,5 @@
 import AVFoundation
+import UIKit
 
 public class BeatPlayer {
     var audioFiles: [AVAudioFile] = []
@@ -31,21 +32,33 @@ public class BeatPlayer {
         try! engine.start()
     }
     
-    public func playSequence(compassTempo: Double, numberOfPositionNodes: Int, sequence: [SoundElement]){
-        for element in sequence{
-            switch element{
-            case SoundElement.kick:
-                  playBeat(withIndex: 0)
-              case SoundElement.snare:
-                  playBeat(withIndex: 1)
-              case SoundElement.hihat:
-                  playBeat(withIndex: 2)
-              default:
-                  break
-              }
-              sleep(UInt32(compassTempo / Double(numberOfPositionNodes)))
-          }
-      }
+    public func playSequence(sequence: [PositionNode], totalTime: Double, quantity: Double){
+        var interval = totalTime / quantity
+        DispatchQueue.global().async { [unowned self] in
+            for element in sequence {
+                Thread.sleep(forTimeInterval: interval)
+                var index: Int {
+                var value = -1
+                switch element.occupedWith {
+                case .kick:
+                    value = 0
+                case .hihat:
+                    value = 1
+                case .snare:
+                    value = 2
+                default:
+                    value = -1 
+                }
+                    return value
+                }
+                if index != -1{
+                    let node = self.audioAudioNodes[index]
+                    node.scheduleFile(self.audioFiles[index], at: nil, completionHandler: nil)
+                    node.play()
+                }
+            }
+        }
+    }
     
     public func playBeat(withIndex: Int){
         DispatchQueue.global().async{ [unowned self] in
