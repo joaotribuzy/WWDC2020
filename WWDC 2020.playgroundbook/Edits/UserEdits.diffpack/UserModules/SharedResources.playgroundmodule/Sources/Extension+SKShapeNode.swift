@@ -47,10 +47,9 @@ extension RhythmGameScene{
                     stopPointer()
                 }
             }
-            print(firstButton.isUserInteractionEnabled)
-            print(secondButton.isUserInteractionEnabled)
-            print(thirdButton.isUserInteractionEnabled)
+            playOnce(location)
         }
+        
     }
     
     
@@ -58,18 +57,13 @@ extension RhythmGameScene{
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
-            
             moveNode(location)
-            print(firstButton.isUserInteractionEnabled)
-            print(secondButton.isUserInteractionEnabled)
-            print(thirdButton.isUserInteractionEnabled)
         }
     }
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
-            
             plugInPosition(location)
         }
     }
@@ -77,7 +71,6 @@ extension RhythmGameScene{
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
-            
             plugInPosition(location)
         }
         
@@ -177,6 +170,15 @@ extension RhythmGameScene{
 }
 
 extension RhythmGameScene{
+    public func playOnce(_ location: CGPoint){
+        if firstButton.contains(location){
+            playSoundElement(SoundElement.kick)
+        } else if secondButton.contains(location){
+            playSoundElement(SoundElement.hihat)
+        } else if thirdButton.contains(location){
+            playSoundElement(SoundElement.snare)
+        }
+    }
     public func playSoundElement(_ element: SoundElement){
         switch element {
         case SoundElement.kick:
