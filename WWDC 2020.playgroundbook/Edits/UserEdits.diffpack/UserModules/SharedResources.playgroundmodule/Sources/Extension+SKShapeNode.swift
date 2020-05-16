@@ -38,10 +38,13 @@ extension RhythmGameScene{
             if playButton.contains(location){
                 if audioPlayer.isPlaying == false{
                     audioPlayer.isPlaying = true
-                    audioPlayer.playSequence(sequence: positionNodes, totalTime: 1, quantity: 8)
+                    audioPlayer.playSequence(sequence: positionNodes, totalTime: timeOfSequence, quantity: 8)
                     rotatePointer()
                 } else{
                     audioPlayer.isPlaying = false
+                    audioPlayer.stop()
+                    audioPlayer.start()
+                    stopPointer()
                 }
             }
             print(firstButton.isUserInteractionEnabled)
@@ -188,12 +191,15 @@ extension RhythmGameScene{
     }
     
     private func rotatePointer(){
-//          let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: 1)
-        while(audioPlayer.isPlaying == true){
-            let rotate = SKAction.rotate(toAngle: CGFloat(-2 * Double.pi), duration: 1)
-            pointer.run(rotate)
-        }
+        let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: timeOfSequence)
+        let repeatForever = SKAction.repeatForever(rotate)
+        pointer.run(repeatForever)
+    }
+    
+    private func stopPointer(){
+        pointer.removeAllActions()
         pointer.removeFromParent()
+        pointer = SKSpriteNode(color: .black, size: CGSize(width: 10, height: 280))
         setupPointer()
     }
 }

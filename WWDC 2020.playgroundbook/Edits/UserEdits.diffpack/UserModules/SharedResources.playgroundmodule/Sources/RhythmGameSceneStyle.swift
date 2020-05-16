@@ -66,7 +66,7 @@ extension RhythmGameScene{
         setupPointerStyle()
     }
     
-    private func setupPointerPosition(){
+    public func setupPointerPosition(){
         pointer.position = CGPoint(x: 0, y: -100)
         pointer.anchorPoint = CGPoint(x: 0.5, y: 0)
         pointer.zPosition = 5

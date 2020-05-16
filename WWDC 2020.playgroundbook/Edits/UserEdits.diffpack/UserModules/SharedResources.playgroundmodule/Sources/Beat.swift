@@ -24,8 +24,6 @@ public class BeatPlayer {
     }
     
     public func start() {
-        try! engine.start()
-        
         for node in audioAudioNodes {
             engine.attach(node)
             engine.connect(node, to: mixer, format: nil)
@@ -33,11 +31,19 @@ public class BeatPlayer {
         try! engine.start()
     }
     
+    public func stop(){
+        try! engine.stop()
+    }
+    
     public func playSequence(sequence: [PositionNode], totalTime: Double, quantity: Double){
         var interval = totalTime / quantity
         DispatchQueue.global().async { [unowned self] in
             while(self.isPlaying == true){
                 for element in sequence {
+                    guard self.isPlaying == true else {
+                        break
+                        return
+                    }
                     var index: Int {
                         var value = -1
                         switch element.occupedWith {

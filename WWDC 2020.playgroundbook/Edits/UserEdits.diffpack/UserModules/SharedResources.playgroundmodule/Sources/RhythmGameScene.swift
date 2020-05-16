@@ -8,6 +8,7 @@ public class RhythmGameScene: SKScene{
     public var buttonsList: [BeatButtonNode] = [] 
     public let clock = SKShapeNode(circleOfRadius: 300)
     
+    var timeOfSequence: TimeInterval = 1
     
     public var pointer = SKSpriteNode(color: .black, size: CGSize(width: 10, height: 280))
     
@@ -20,10 +21,10 @@ public class RhythmGameScene: SKScene{
     override public func didMove(to view: SKView) {
         buttonsList = [firstButton, secondButton, thirdButton]
         backgroundColor = .purple
+        audioPlayer.start()
         setupClock()
         setupButton()
         setupPositionNodes()
-        audioPlayer.start()
         setupPlayButton()
         setupPointer()
         
