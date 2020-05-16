@@ -7,7 +7,7 @@ public class BeatPlayer {
     var audioAudioNodes = [AVAudioPlayerNode]()
     var mixer: AVAudioMixerNode
     var urls: [SoundElement] = []
-    var isPlaying: Bool = true
+    var isPlaying: Bool = false
     
     public init (urls: [SoundElement] = []) {
         audioFiles = urls.map { try! AVAudioFile(forReading: $0.file) }
@@ -38,7 +38,6 @@ public class BeatPlayer {
         DispatchQueue.global().async { [unowned self] in
             while(self.isPlaying == true){
                 for element in sequence {
-                    Thread.sleep(forTimeInterval: interval)
                     var index: Int {
                         var value = -1
                         switch element.occupedWith {
@@ -58,6 +57,7 @@ public class BeatPlayer {
                         node.scheduleFile(self.audioFiles[index], at: nil, completionHandler: nil)
                         node.play()
                     }
+                    Thread.sleep(forTimeInterval: interval)
                 }
             }
         }

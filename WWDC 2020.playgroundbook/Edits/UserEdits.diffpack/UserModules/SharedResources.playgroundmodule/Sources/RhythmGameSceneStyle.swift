@@ -73,7 +73,6 @@ extension RhythmGameScene{
     }
     
     private func setupPointerStyle(){
-        
     }
 }
 
@@ -114,8 +113,6 @@ extension RhythmGameScene{
             positionNodes.append(circle)
             clock.addChild(circle)
         }
-//          positionNodes.first?.fillColor = .systemPink
-//          positionNodes[1].fillColor = .green
     }
 }
 

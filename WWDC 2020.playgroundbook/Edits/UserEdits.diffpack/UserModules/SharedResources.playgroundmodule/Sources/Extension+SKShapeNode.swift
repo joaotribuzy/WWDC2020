@@ -36,8 +36,13 @@ extension RhythmGameScene{
         for touch in (touches as! Set<UITouch>){
             let location = touch.location(in: self)
             if playButton.contains(location){
-                audioPlayer.playSequence(sequence: positionNodes, totalTime: 1, quantity: 8)
-                rotatePointer()
+                if audioPlayer.isPlaying == false{
+                    audioPlayer.isPlaying = true
+                    audioPlayer.playSequence(sequence: positionNodes, totalTime: 1, quantity: 8)
+                    rotatePointer()
+                } else{
+                    audioPlayer.isPlaying = false
+                }
             }
             print(firstButton.isUserInteractionEnabled)
             print(secondButton.isUserInteractionEnabled)
@@ -183,8 +188,12 @@ extension RhythmGameScene{
     }
     
     private func rotatePointer(){
-        let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: 1)
-        let repeatRotation = SKAction.repeatForever(rotate)
-        pointer.run(repeatRotation)
+//          let rotate = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: 1)
+        while(audioPlayer.isPlaying == true){
+            let rotate = SKAction.rotate(toAngle: CGFloat(-2 * Double.pi), duration: 1)
+            pointer.run(rotate)
+        }
+        pointer.removeFromParent()
+        setupPointer()
     }
 }
