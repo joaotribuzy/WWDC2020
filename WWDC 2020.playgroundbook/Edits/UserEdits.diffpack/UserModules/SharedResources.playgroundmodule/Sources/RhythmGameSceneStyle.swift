@@ -6,10 +6,22 @@ extension RhythmGameScene{
         addChild(secondButton)
         addChild(thirdButton)
         addChild(fourthButton)
+        
         buttonsList.append(firstButton)
         buttonsList.append(secondButton)
         buttonsList.append(thirdButton)
         buttonsList.append(fourthButton)
+        
+        addChild(firstButtonDown)
+        addChild(secondButtonDown)
+        addChild(thirdButtonDown)
+        addChild(fourthButtonDown)
+        
+        buttonsList.append(firstButtonDown)
+        buttonsList.append(secondButtonDown)
+        buttonsList.append(thirdButtonDown)
+        buttonsList.append(fourthButtonDown)
+        
         setupButtonsStyle()
         setupButtonsPosition()
         setupButtonsName()
@@ -20,6 +32,11 @@ extension RhythmGameScene{
         secondButton.soundElement = SoundElement.hihat
         thirdButton.soundElement = SoundElement.snare
         fourthButton.soundElement = SoundElement.hihat
+        
+        firstButtonDown.soundElement = SoundElement.kick
+        secondButtonDown.soundElement = SoundElement.hihat
+        thirdButtonDown.soundElement = SoundElement.snare
+        fourthButtonDown.soundElement = SoundElement.hihat
     }
     
     private func setupButtonsStyle(){
@@ -31,21 +48,43 @@ extension RhythmGameScene{
         thirdButton.lineWidth = 0
         fourthButton.fillColor = .brown
         fourthButton.lineWidth = 0
+        
+        firstButtonDown.fillColor = .yellow
+        firstButtonDown.lineWidth = 0
+        secondButtonDown.fillColor = .green
+        secondButtonDown.lineWidth = 0
+        thirdButtonDown.fillColor = .blue
+        thirdButtonDown.lineWidth = 0
+        fourthButtonDown.fillColor = .brown
+        fourthButtonDown.lineWidth = 0
     }
     
     public func setupButtonsPosition(){
-        firstButton.position = CGPoint(x: -266, y: 480 - 80)
+        firstButton.position = CGPoint(x: -266, y: 480 - 150)
         firstButton.previousPosition = firstButton.position
         firstButton.initialPosition = firstButton.position
-        secondButton.position = CGPoint(x: -89, y: 480 - 80)
+        secondButton.position = CGPoint(x: -89, y: 480 - 150)
         secondButton.previousPosition = secondButton.position
         secondButton.initialPosition = secondButton.position
-        thirdButton.position = CGPoint(x: 89, y: 480 - 80)
+        thirdButton.position = CGPoint(x: 89, y: 480 - 150)
         thirdButton.previousPosition = thirdButton.position
         thirdButton.initialPosition = thirdButton.position
-        fourthButton.position = CGPoint(x: 266, y: 480 - 80)
+        fourthButton.position = CGPoint(x: 266, y: 480 - 150)
         fourthButton.previousPosition = fourthButton.position
         fourthButton.initialPosition = fourthButton.position
+        
+        firstButtonDown.position = CGPoint(x: -266, y: -480)
+        firstButtonDown.previousPosition = firstButton.position
+        firstButtonDown.initialPosition = firstButton.position
+        secondButtonDown.position = CGPoint(x: -89, y: -480)
+        secondButtonDown.previousPosition = secondButton.position
+        secondButtonDown.initialPosition = secondButton.position
+        thirdButtonDown.position = CGPoint(x: 89, y: -480)
+        thirdButtonDown.previousPosition = thirdButton.position
+        thirdButtonDown.initialPosition = thirdButton.position
+        fourthButtonDown.position = CGPoint(x: 266, y: -480)
+        fourthButtonDown.previousPosition = fourthButton.position
+        fourthButtonDown.initialPosition = fourthButton.position
         
         for btn in buttonsList{
             btn.zPosition = 3
@@ -94,7 +133,7 @@ extension RhythmGameScene{
     }
     
     private func setupButtonPlayPosition(){
-        playButton.position = CGPoint(x: 0 + 200, y: 480 - 200)
+        playButton.position = CGPoint(x: 0, y: 480 - 25)
         addChild(playButton)
     }
     

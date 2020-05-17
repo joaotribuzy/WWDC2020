@@ -6,6 +6,11 @@ public class RhythmGameScene: SKScene{
     public let thirdButton = BeatButtonNode(circleOfRadius: 30)
     public let fourthButton = BeatButtonNode(circleOfRadius: 30)
     
+    public let firstButtonDown = BeatButtonNode(circleOfRadius: 30)
+    public let secondButtonDown = BeatButtonNode(circleOfRadius: 30)
+    public let thirdButtonDown = BeatButtonNode(circleOfRadius: 30)
+    public let fourthButtonDown = BeatButtonNode(circleOfRadius: 30)
+    
     public var buttonsList: [BeatButtonNode] = [] 
     public let clock = SKShapeNode(circleOfRadius: 300)
     
