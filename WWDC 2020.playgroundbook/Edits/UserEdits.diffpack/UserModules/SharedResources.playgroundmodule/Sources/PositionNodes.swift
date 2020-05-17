@@ -1,6 +1,7 @@
-import SpriteKit
-
-public class PositionNode: SKShapeNode{
-    var isOcupped = false
-    var occupedWith: SoundElement? = nil
-}
+//  import SpriteKit
+//  
+//  public class PositionNode: SKShapeNode{
+//      var isOcupped = false
+//      var occupedWith: SoundElement? = nil
+//  }
+//  

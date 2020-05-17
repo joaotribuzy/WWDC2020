@@ -5,8 +5,12 @@
 	<key>Name</key>
 	<string>My Playground</string>
 	<key>LiveViewEdgeToEdge</key>
-	<false/>
+	<true/>
 	<key>LiveViewMode</key>
-	<string>HiddenByDefault</string>
+	<string>VisibleByDefault</string>
+	<key>__AutoImportedModules</key>
+	<array>
+		<string>Book</string>
+	</array>
 </dict>
 </plist>
