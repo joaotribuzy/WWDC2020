@@ -9,10 +9,12 @@ extension RhythmGameScene{
             let location = touch.location(in: self)
             if playButton.contains(location){
                 if audioPlayer.isPlaying == false{
+                    disableInteractionNodes()
                     audioPlayer.isPlaying = true
                     audioPlayer.playSequence(sequence: positionNodes, totalTime: timeOfSequence, quantity: 8)
                     rotatePointer()
                 } else{
+                    enableInteractionNodes()
                     audioPlayer.isPlaying = false
                     audioPlayer.stop()
                     audioPlayer.start()
@@ -215,6 +217,22 @@ extension RhythmGameScene{
             } else if pos.intersects(fourthButtonDown){
                 pos.isOcupped = true
                 pos.occupedWith = fourthButtonDown.soundElement
+            }
+        }
+    }
+    
+    func enableInteractionNodes(){
+        for btn in buttonsList{
+            if btn.position == btn.initialPosition{
+                btn.isHidden = false
+            }
+        }
+    }
+    
+    func disableInteractionNodes(){
+        for btn in buttonsList{
+            if btn.position == btn.initialPosition{
+                btn.isHidden = true
             }
         }
     }
