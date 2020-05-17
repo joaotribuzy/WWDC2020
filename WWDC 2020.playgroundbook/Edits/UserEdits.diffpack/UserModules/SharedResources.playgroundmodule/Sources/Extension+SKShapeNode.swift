@@ -118,6 +118,49 @@ extension RhythmGameScene{
                 fourthButton.position = location
             }
         }
+        
+        
+        
+        
+        if firstButtonDown.contains(location){
+            firstButtonDown.zPosition = 4
+            if firstButtonDown.intersects(secondButtonDown) || firstButtonDown.intersects(thirdButtonDown) || firstButton.intersects(fourthButtonDown) || firstButtonDown.intersects(firstButton) || firstButtonDown.intersects(secondButton) || firstButtonDown.intersects(thirdButton) || firstButtonDown.intersects(fourthButton){
+                firstButtonDown.position = firstButtonDown.initialPosition
+                firstButtonDown.previousPosition = firstButtonDown.initialPosition
+                firstButtonDown.previousNodePosition = nil
+            }else{
+                firstButtonDown.position = location
+            }
+            
+        } else if secondButtonDown.contains(location){
+            secondButtonDown.zPosition = 4
+            if secondButtonDown.intersects(firstButtonDown) || secondButton.intersects(thirdButtonDown) || secondButton.intersects(fourthButtonDown) || secondButtonDown.intersects(firstButton) || secondButtonDown.intersects(secondButton) || secondButtonDown.intersects(thirdButton) || secondButtonDown.intersects(fourthButton){
+                secondButtonDown.position = secondButtonDown.initialPosition
+                secondButtonDown.previousPosition = secondButtonDown.initialPosition
+                secondButtonDown.previousNodePosition = nil
+            }else{
+                secondButtonDown.position = location
+            }
+            
+        } else if thirdButtonDown.contains(location){
+            thirdButtonDown.zPosition = 4
+            if thirdButtonDown.intersects(firstButton) || thirdButtonDown.intersects(secondButtonDown) || thirdButtonDown.intersects(fourthButtonDown) || thirdButtonDown.intersects(firstButton) || thirdButtonDown.intersects(secondButton) || thirdButtonDown.intersects(thirdButton) || thirdButtonDown.intersects(fourthButton){
+                thirdButtonDown.position = thirdButtonDown.initialPosition
+                thirdButtonDown.previousPosition = thirdButtonDown.initialPosition
+                thirdButtonDown.previousNodePosition = nil
+            } else {
+                thirdButtonDown.position = location
+            }
+        } else if fourthButtonDown.contains(location){
+            fourthButtonDown.zPosition = 4
+            if fourthButtonDown.intersects(firstButtonDown) || fourthButtonDown.intersects(secondButtonDown) || fourthButtonDown.intersects(thirdButtonDown) || fourthButtonDown.intersects(firstButton) || fourthButtonDown.intersects(secondButton) || fourthButtonDown.intersects(thirdButton) || fourthButtonDown.intersects(fourthButton){
+                fourthButtonDown.position = fourthButtonDown.initialPosition
+                fourthButtonDown.previousPosition = fourthButtonDown.initialPosition
+                fourthButtonDown.previousNodePosition = nil
+            }else{
+                fourthButton.position = location
+            }
+        }
     }
     
     public func plugInPosition(_ location: CGPoint){
@@ -131,6 +174,14 @@ extension RhythmGameScene{
             node = thirdButton
         } else if fourthButton.contains(location){
             node = fourthButton
+        } else if firstButtonDown.contains(location){
+            node = firstButtonDown
+        } else if secondButtonDown.contains(location){
+            node = secondButtonDown
+        } else if thirdButtonDown.contains(location){
+            node = thirdButtonDown
+        } else if fourthButtonDown.contains(location){
+            node = fourthButtonDown
         }
         
         guard node != nil else {return}
@@ -175,6 +226,21 @@ extension RhythmGameScene{
             }else if pos.intersects(thirdButton){
                 pos.isOcupped = true
                 pos.occupedWith = thirdButton.soundElement
+            } else if pos.intersects(fourthButton){
+                pos.isOcupped = true
+                pos.occupedWith = fourthButton.soundElement
+            }else if pos.intersects(firstButtonDown) {
+                pos.isOcupped = true
+                pos.occupedWith = firstButtonDown.soundElement
+            } else if pos.intersects(secondButtonDown){
+                pos.isOcupped = true
+                pos.occupedWith = secondButtonDown.soundElement
+            }else if pos.intersects(thirdButtonDown){
+                pos.isOcupped = true
+                pos.occupedWith = thirdButtonDown.soundElement
+            } else if pos.intersects(fourthButtonDown){
+                pos.isOcupped = true
+                pos.occupedWith = fourthButtonDown.soundElement
             }
         }
     }
@@ -189,6 +255,14 @@ extension RhythmGameScene{
         } else if thirdButton.contains(location){
             playSoundElement(SoundElement.snare)
         } else if fourthButton.contains(location){
+            playSoundElement(SoundElement.hihat)
+        } else if firstButtonDown.contains(location){
+            playSoundElement(SoundElement.kick)
+        } else if secondButtonDown.contains(location){
+            playSoundElement(SoundElement.hihat)
+        } else if thirdButtonDown.contains(location){
+            playSoundElement(SoundElement.snare)
+        } else if fourthButtonDown.contains(location){
             playSoundElement(SoundElement.hihat)
         }
     }

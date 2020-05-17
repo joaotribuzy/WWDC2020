@@ -74,17 +74,17 @@ extension RhythmGameScene{
         fourthButton.initialPosition = fourthButton.position
         
         firstButtonDown.position = CGPoint(x: -266, y: -480)
-        firstButtonDown.previousPosition = firstButton.position
-        firstButtonDown.initialPosition = firstButton.position
+        firstButtonDown.previousPosition = firstButtonDown.position
+        firstButtonDown.initialPosition = firstButtonDown.position
         secondButtonDown.position = CGPoint(x: -89, y: -480)
-        secondButtonDown.previousPosition = secondButton.position
-        secondButtonDown.initialPosition = secondButton.position
+        secondButtonDown.previousPosition = secondButtonDown.position
+        secondButtonDown.initialPosition = secondButtonDown.position
         thirdButtonDown.position = CGPoint(x: 89, y: -480)
-        thirdButtonDown.previousPosition = thirdButton.position
-        thirdButtonDown.initialPosition = thirdButton.position
+        thirdButtonDown.previousPosition = thirdButtonDown.position
+        thirdButtonDown.initialPosition = thirdButtonDown.position
         fourthButtonDown.position = CGPoint(x: 266, y: -480)
-        fourthButtonDown.previousPosition = fourthButton.position
-        fourthButtonDown.initialPosition = fourthButton.position
+        fourthButtonDown.previousPosition = fourthButtonDown.position
+        fourthButtonDown.initialPosition = fourthButtonDown.position
         
         for btn in buttonsList{
             btn.zPosition = 3
