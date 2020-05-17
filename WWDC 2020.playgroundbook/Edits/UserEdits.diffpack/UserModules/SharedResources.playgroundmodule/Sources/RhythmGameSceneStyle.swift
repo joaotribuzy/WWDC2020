@@ -41,22 +41,19 @@ extension RhythmGameScene{
     
     private func setupButtonsStyle(){
         firstButton.fillColor = .yellow
-        firstButton.lineWidth = 0
         secondButton.fillColor = .green
-        secondButton.lineWidth = 0
         thirdButton.fillColor = .blue
-        thirdButton.lineWidth = 0
         fourthButton.fillColor = .brown
-        fourthButton.lineWidth = 0
         
         firstButtonDown.fillColor = .yellow
-        firstButtonDown.lineWidth = 0
         secondButtonDown.fillColor = .cyan
-        secondButtonDown.lineWidth = 0
         thirdButtonDown.fillColor = .magenta
-        thirdButtonDown.lineWidth = 0
-        fourthButtonDown.fillColor = .darkText
-        fourthButtonDown.lineWidth = 0
+        fourthButtonDown.fillColor = .gray
+        
+        for b in buttonsList{
+            b.strokeColor = .black
+            b.lineWidth = 5
+        }
     }
     
     public func setupButtonsPosition(){
@@ -100,7 +97,8 @@ extension RhythmGameScene{
     
     private func setupClockStyle(){
         clock.fillColor = .red
-        clock.lineWidth = 0
+        clock.lineWidth = 6
+        clock.strokeColor = .black
     }
     
     private func setupClockPosition(){
@@ -150,7 +148,8 @@ extension RhythmGameScene{
         
         for i in -2...numberOfCircle - 3 {
             let circle = PositionNode(circleOfRadius: 10)
-            circle.strokeColor = .clear
+            circle.strokeColor = .black
+            circle.lineWidth = 6
             circle.fillColor = .cyan
             circle.name = String(format:"circle%d",i)
             let angle = -2 * Double.pi / Double(numberOfCircle) * Double(i)
