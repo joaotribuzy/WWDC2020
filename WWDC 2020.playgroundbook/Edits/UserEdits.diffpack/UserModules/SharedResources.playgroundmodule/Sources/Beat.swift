@@ -1,6 +1,46 @@
 import AVFoundation
 import UIKit
 
+public enum SoundElement{
+    case kick
+    case snare
+    case hihat
+    case cowbell
+    case conga
+    case conga2
+    
+    public var description: String {
+        switch self {
+        case .kick: return "kick"
+        case .hihat: return "hihat"
+        case .snare: return "snare"
+        case .cowbell: return "cowbell"
+        case .conga: return "conga"
+        case .conga2: return "conga2"
+        }
+    }
+    
+    public var file: URL{
+        let bundle = Bundle.main
+        switch self {
+        case .kick:
+            return bundle.url(forResource: "kick", withExtension: "mp3")!
+        case .snare:
+            return bundle.url(forResource: "snare", withExtension: "mp3")!
+        case .hihat:
+            return bundle.url(forResource: "hihat", withExtension: "mp3")!
+        case .cowbell: 
+            return bundle.url(forResource: "cowbell", withExtension: "mp3")!
+        case .conga: 
+            return bundle.url(forResource: "conga", withExtension: "mp3")!
+        case .conga2: 
+            return bundle.url(forResource: "conga2", withExtension: "mp3")!
+        default:
+            break 
+        }
+    }
+}
+
 public class BeatPlayer {
     var audioFiles: [AVAudioFile] = []
     var engine: AVAudioEngine
@@ -36,6 +76,7 @@ public class BeatPlayer {
     }
     
     public func playSequence(sequence: [PositionNode], totalTime: Double, quantity: Double){
+        print(sequence[4].occupedWith)
         var interval = totalTime / quantity
         DispatchQueue.global().async { [unowned self] in
             while(self.isPlaying == true){
@@ -47,14 +88,13 @@ public class BeatPlayer {
                     var index: Int {
                         var value = -1
                         switch element.occupedWith {
-                        case .kick:
-                            value = 0
-                        case .hihat:
-                            value = 1
-                        case .snare:
-                            value = 2
-                        default:
-                            value = -1 
+                        case .kick: value = 0
+                        case .hihat: value = 1
+                        case .snare: value = 2
+                        case .cowbell: value = 3
+                        case .conga: value = 4
+                        case .conga2: value = 5
+                        default: value = -1 
                         }
                         return value
                     }

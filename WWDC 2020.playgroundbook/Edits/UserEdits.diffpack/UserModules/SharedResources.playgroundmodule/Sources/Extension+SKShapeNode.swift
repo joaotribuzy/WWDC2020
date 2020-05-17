@@ -3,34 +3,6 @@ import UIKit
 import AVFoundation
 import PlaygroundSupport
 
-public enum SoundElement{
-    case kick
-    case snare
-    case hihat
-    
-    public var description: String {
-        switch self {
-        case .kick: return "kick"
-        case .hihat: return "hihat"
-        case .snare: return "snare"
-        }
-    }
-    
-    public var file: URL{
-        let bundle = Bundle.main
-        switch self {
-        case .kick:
-            return bundle.url(forResource: "kick", withExtension: "mp3")!
-        case .snare:
-            return bundle.url(forResource: "snare", withExtension: "mp3")!
-        case .hihat:
-            return bundle.url(forResource: "hihat", withExtension: "mp3")!
-        default:
-            break 
-        }
-    }
-}
-
 extension RhythmGameScene{
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in (touches as! Set<UITouch>){
@@ -158,7 +130,7 @@ extension RhythmGameScene{
                 fourthButtonDown.previousPosition = fourthButtonDown.initialPosition
                 fourthButtonDown.previousNodePosition = nil
             }else{
-                fourthButton.position = location
+                fourthButtonDown.position = location
             }
         }
     }
@@ -187,6 +159,8 @@ extension RhythmGameScene{
         guard node != nil else {return}
         
         guard clock.frame.contains(location) else {
+            node?.previousNodePosition?.isOcupped = false
+            node?.previousNodePosition?.occupedWith = nil
             node?.position = node!.initialPosition
             node?.previousPosition = node!.initialPosition
             node?.previousNodePosition = nil
@@ -259,21 +233,21 @@ extension RhythmGameScene{
         } else if firstButtonDown.contains(location){
             playSoundElement(SoundElement.kick)
         } else if secondButtonDown.contains(location){
-            playSoundElement(SoundElement.hihat)
+            playSoundElement(SoundElement.cowbell)
         } else if thirdButtonDown.contains(location){
-            playSoundElement(SoundElement.snare)
+            playSoundElement(SoundElement.conga)
         } else if fourthButtonDown.contains(location){
-            playSoundElement(SoundElement.hihat)
+            playSoundElement(SoundElement.conga2)
         }
     }
     public func playSoundElement(_ element: SoundElement){
         switch element {
-        case SoundElement.kick:
-            audioPlayer.playBeat(withIndex: 0)
-        case SoundElement.hihat:
-            audioPlayer.playBeat(withIndex: 1)
-        case SoundElement.snare:
-            audioPlayer.playBeat(withIndex: 2)
+        case SoundElement.kick: audioPlayer.playBeat(withIndex: 0)
+        case SoundElement.hihat: audioPlayer.playBeat(withIndex: 1)
+        case SoundElement.snare: audioPlayer.playBeat(withIndex: 2)
+        case SoundElement.cowbell: audioPlayer.playBeat(withIndex: 3)
+        case SoundElement.conga: audioPlayer.playBeat(withIndex: 4)
+        case SoundElement.conga2: audioPlayer.playBeat(withIndex: 5)
         default:
             break 
         }

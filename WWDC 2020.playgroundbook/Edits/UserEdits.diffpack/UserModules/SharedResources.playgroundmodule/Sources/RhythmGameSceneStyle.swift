@@ -34,9 +34,9 @@ extension RhythmGameScene{
         fourthButton.soundElement = SoundElement.hihat
         
         firstButtonDown.soundElement = SoundElement.kick
-        secondButtonDown.soundElement = SoundElement.hihat
-        thirdButtonDown.soundElement = SoundElement.snare
-        fourthButtonDown.soundElement = SoundElement.hihat
+        secondButtonDown.soundElement = SoundElement.cowbell
+        thirdButtonDown.soundElement = SoundElement.conga
+        fourthButtonDown.soundElement = SoundElement.conga2
     }
     
     private func setupButtonsStyle(){
@@ -51,11 +51,11 @@ extension RhythmGameScene{
         
         firstButtonDown.fillColor = .yellow
         firstButtonDown.lineWidth = 0
-        secondButtonDown.fillColor = .green
+        secondButtonDown.fillColor = .cyan
         secondButtonDown.lineWidth = 0
-        thirdButtonDown.fillColor = .blue
+        thirdButtonDown.fillColor = .magenta
         thirdButtonDown.lineWidth = 0
-        fourthButtonDown.fillColor = .brown
+        fourthButtonDown.fillColor = .darkText
         fourthButtonDown.lineWidth = 0
     }
     
