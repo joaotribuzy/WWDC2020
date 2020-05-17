@@ -24,22 +24,6 @@
 				<key>File</key>
 				<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/UserManifest.plist</string>
 			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/RhythmGameViewController.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/RhythmGameScene.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/RhythmGameSceneStyle.swift</string>
-			</dict>
-			<dict>
-				<key>File</key>
-				<string>UserModules/SharedResources.playgroundmodule/Sources/Extension+SKShapeNode.swift</string>
-			</dict>
 		</array>
 		<key>Modified</key>
 		<array>
