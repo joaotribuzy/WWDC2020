@@ -8,9 +8,10 @@ public class RhythmGameViewController: UIViewController{
         setupViewController()
     }
     
+    let skView = SKView()
+    let skScene = RhythmGameScene()
+    
     private func setupViewController(){
-        let skView = SKView()
-        let skScene = RhythmGameScene()
         skScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         skScene.scaleMode = .resizeFill
         skView.presentScene(skScene)
