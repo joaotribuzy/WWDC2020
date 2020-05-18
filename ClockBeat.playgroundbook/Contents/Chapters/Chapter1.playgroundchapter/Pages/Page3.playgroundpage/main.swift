@@ -13,8 +13,10 @@ sceneViewController.skScene.playButton.fillTexture = SKTexture.init(image: UIIma
  
  Stay fantastic and make a goooooooood 'Rhythm', I'm trying to show that it's easier than they looks :)
  
- Thank you for enjoy this playground. Many things in our lives are easier than looks... programming, cooking... including music
+ Thank you for enjoy this playground. Many things in our lives are easier than looks... programming, cooking... including music, even more when it's your passion like it's my passion.
  
- Congratulations, and I'll see you in WWDC 2020
+ In any moment... Make music! Play music!
+ 
+ Congratulations, and I'll see you in WWDC 2020!
 */
 
