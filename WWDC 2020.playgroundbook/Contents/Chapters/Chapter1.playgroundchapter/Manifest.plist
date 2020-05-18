@@ -9,10 +9,10 @@
 	<key>Name</key>
 	<string>My Playground</string>
 	<key>TemplatePageFilename</key>
-	<string>Template.playgroundpage</string>
+	<string>Page1.playgroundpage</string>
 	<key>InitialUserPages</key>
 	<array>
-		<string>My Playground.playgroundpage</string>
+		<string>Page1.playgroundpage</string>
 	</array>
 </dict>
 </plist>

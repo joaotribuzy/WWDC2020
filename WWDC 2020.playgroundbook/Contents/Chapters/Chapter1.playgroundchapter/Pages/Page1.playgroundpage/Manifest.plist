@@ -7,7 +7,7 @@
 	<key>LiveViewEdgeToEdge</key>
 	<true/>
 	<key>LiveViewMode</key>
-	<string>VisibleByDefault</string>
+	<string>HiddenByDefault</string>
 	<key>__AutoImportedModules</key>
 	<array>
 		<string>Book</string>
