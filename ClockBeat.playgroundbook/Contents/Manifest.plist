@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ImageReference</key>
+	<string>icon.png</string>
 	<key>Chapters</key>
 	<array>
 		<string>Chapter1.playgroundchapter</string>
@@ -25,6 +27,6 @@
 		<string>Book</string>
 	</array>
 	<key>UserModuleMode</key>
-	<string>Full</string>
+	<string>Disabled</string>
 </dict>
 </plist>
