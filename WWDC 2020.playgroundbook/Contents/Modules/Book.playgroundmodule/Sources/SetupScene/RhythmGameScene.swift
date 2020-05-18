@@ -1,7 +1,16 @@
 import Foundation
 import SpriteKit
 
+public enum Page{
+    case first
+    case second
+    case third
+}
+
+public var currentPage = Page.first
+
 public class RhythmGameScene: SKScene{
+    
     public let firstButton = BeatButtonNode(circleOfRadius: 30)
     public let secondButton = BeatButtonNode(circleOfRadius: 30)
     public let thirdButton = BeatButtonNode(circleOfRadius: 30)

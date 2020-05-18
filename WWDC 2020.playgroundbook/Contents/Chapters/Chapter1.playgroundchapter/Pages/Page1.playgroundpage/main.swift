@@ -1,5 +1,14 @@
 //#-hidden-code
 showClock()
+sceneViewController.skScene.playButton.isHidden = true
+for bt in sceneViewController.skScene.buttonsList{
+    if bt == sceneViewController.skScene.firstButton{
+        bt.isHidden = false
+    }else {
+        bt.isHidden = true
+    }
+}
+sceneViewController.skScene.pointer.isHidden = true
 //#-end-hidden-code
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, showClock())
@@ -14,5 +23,5 @@ showClock()
  
  First, when you press *"Run my Code"*, you'll see a clock and a little circle that have a sound into then.
  
- Try to drag the circle to one of positions of the clock... after you can go to next page...
+ Try to drag the circle to one of positions of the clock. When you make this, you  are positioning a sound on a determinated beat of a rhythm... after you can go to next page...
 */

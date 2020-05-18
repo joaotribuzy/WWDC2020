@@ -3,14 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>Page1</string>
+	<string>Template Page</string>
 	<key>LiveViewEdgeToEdge</key>
 	<true/>
 	<key>LiveViewMode</key>
 	<string>HiddenByDefault</string>
-	<key>__AutoImportedModules</key>
-	<array>
-		<string>Book</string>
-	</array>
 </dict>
 </plist>

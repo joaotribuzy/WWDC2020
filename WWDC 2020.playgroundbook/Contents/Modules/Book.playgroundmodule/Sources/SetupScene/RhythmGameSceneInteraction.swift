@@ -9,12 +9,16 @@ extension RhythmGameScene{
             let location = touch.location(in: self)
             if playButton.contains(location){
                 if audioPlayer.isPlaying == false{
-                    disableInteractionNodes()
+                    if currentPage != Page.second{
+                        disableInteractionNodes()
+                    }
                     audioPlayer.isPlaying = true
                     audioPlayer.playSequence(sequence: positionNodes, totalTime: timeOfSequence, quantity: 8)
                     rotatePointer()
                 } else{
-                    enableInteractionNodes()
+                    if currentPage != Page.second{
+                        enableInteractionNodes()
+                    }
                     audioPlayer.isPlaying = false
                     audioPlayer.stop()
                     audioPlayer.start()
