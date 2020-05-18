@@ -1,6 +1,9 @@
 //#-hidden-code
+import SpriteKit
 showClock()
 currentPage = Page.third
+sceneViewController.skScene.playButton.fillColor = .white
+sceneViewController.skScene.playButton.fillTexture = SKTexture.init(image: UIImage(named: "Play")!)
 //#-end-hidden-code
 //#-code-completion(everything, show)
 /*:

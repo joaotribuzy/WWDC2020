@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ImageReference</key>
-	<string>icon.png</string>
+	<string>icon@3x.png</string>
 	<key>Chapters</key>
 	<array>
 		<string>Chapter1.playgroundchapter</string>
@@ -27,6 +27,6 @@
 		<string>Book</string>
 	</array>
 	<key>UserModuleMode</key>
-	<string>Disabled</string>
+	<string>Full</string>
 </dict>
 </plist>

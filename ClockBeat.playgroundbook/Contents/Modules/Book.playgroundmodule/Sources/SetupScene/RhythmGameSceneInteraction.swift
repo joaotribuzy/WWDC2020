@@ -12,6 +12,8 @@ extension RhythmGameScene{
                     if currentPage != Page.second{
                         disableInteractionNodes()
                     }
+                    playButton.fillColor = .white
+                    playButton.fillTexture = SKTexture.init(image: UIImage(named: "Stop")!)
                     audioPlayer.isPlaying = true
                     audioPlayer.playSequence(sequence: positionNodes, totalTime: timeOfSequence, quantity: 8)
                     rotatePointer()
@@ -19,6 +21,8 @@ extension RhythmGameScene{
                     if currentPage != Page.second{
                         enableInteractionNodes()
                     }
+                    playButton.fillColor = .white
+                    playButton.fillTexture = SKTexture.init(image: UIImage(named: "Play")!)
                     audioPlayer.isPlaying = false
                     audioPlayer.stop()
                     audioPlayer.start()
