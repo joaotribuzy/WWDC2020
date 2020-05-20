@@ -27,6 +27,6 @@
 		<string>Book</string>
 	</array>
 	<key>UserModuleMode</key>
-	<string>Full</string>
+	<string>Disabled</string>
 </dict>
 </plist>

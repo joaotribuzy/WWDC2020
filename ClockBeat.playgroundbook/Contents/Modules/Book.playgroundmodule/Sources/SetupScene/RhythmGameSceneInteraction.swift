@@ -11,6 +11,10 @@ extension RhythmGameScene{
                 if audioPlayer.isPlaying == false{
                     if currentPage != Page.second{
                         disableInteractionNodes()
+                    } else if currentPage == Page.second{
+                        if firstButton.position != firstButton.initialPosition{
+                            PlaygroundPage.current.assessmentStatus = .pass(message: "**Feeling GOOD!** [Next](@next)")
+                        }
                     }
                     playButton.fillColor = .white
                     playButton.fillTexture = SKTexture.init(image: UIImage(named: "Stop")!)
@@ -190,7 +194,10 @@ extension RhythmGameScene{
                 posNode.isOcupped = true
                 posNode.occupedWith = node!.soundElement
                 isInPosition += 1
-            } 
+                if currentPage == Page.first{
+                    PlaygroundPage.current.assessmentStatus = .pass(message: "**Beat position MASTER!** [Next](@next)")
+                }
+            }
         }
         if isInPosition == 0{
             node?.position = node!.previousPosition
@@ -275,7 +282,7 @@ extension RhythmGameScene{
         case SoundElement.conga: audioPlayer.playBeat(withIndex: 4)
         case SoundElement.conga2: audioPlayer.playBeat(withIndex: 5)
         default:
-            break 
+            break
         }
     }
     
